@@ -6,11 +6,18 @@ const fs = require('fs');
 const View = require('./view');
 
 describe('Page view', () => {
-  it('displays 2 paragraphs', () => {
+  let view;
+
+  beforeEach(() => {
     document.body.innerHTML = fs.readFileSync('./index.html');
+    view = new View();
+  });
 
-    const view = new View();
-
+  it('displays 2 paragraphs', () => {
     expect(document.querySelectorAll('p').length).toBe(2);
+  });
+  it('adds a new paragraph to the web page', () => {
+    view.addParagraph();
+    expect(document.querySelectorAll('p').length).toBe(3);
   });
 });
