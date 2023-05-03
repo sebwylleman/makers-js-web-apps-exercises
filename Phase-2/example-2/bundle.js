@@ -1,7 +1,6 @@
 (() => {
-  var __getOwnPropNames = Object.getOwnPropertyNames;
   var __commonJS = (cb, mod) => function __require() {
-    return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+    return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
 
   // view.js
@@ -17,6 +16,12 @@
           newParagraph.textContent = "This paragraph has been dynamically added by JavaScript!";
           this.mainContainerEl.append(newParagraph);
         }
+        clearParagraphs() {
+          const paragraphsToRemove = document.querySelectorAll("p");
+          paragraphsToRemove.forEach((paragraph) => {
+            paragraph.remove();
+          });
+        }
       };
       module.exports = View2;
     }
@@ -26,4 +31,5 @@
   var View = require_view();
   var view = new View();
   view.addParagraph();
+  view.clearParagraphs();
 })();
