@@ -20,4 +20,8 @@ describe('Page view', () => {
     view.addParagraph();
     expect(document.querySelectorAll('p').length).toBe(3);
   });
+  it('removes all paragraphs from the document', () => {
+    view.clearParagraphs();
+    expect(document.querySelectorAll('p').length).toBe(0);
+  });
 });
